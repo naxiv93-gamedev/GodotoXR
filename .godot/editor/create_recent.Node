@@ -1,0 +1,5 @@
+DirectionalLight3D
+MeshInstance3D
+XRController3D
+XROrigin3D
+XRCamera3D

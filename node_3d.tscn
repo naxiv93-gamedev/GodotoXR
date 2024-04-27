@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://hxugsfny2ybb"]
+
+[ext_resource type="Script" path="res://Node3D.gd" id="1_mej2n"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_msgmy"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_xdh2t"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h0u5w"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_mej2n")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="XROrigin3D/XRCamera3D"]
+
+[node name="XRControllerLeft" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/XRControllerLeft" instance=ExtResource("2_msgmy")]
+
+[node name="XRControllerRight" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/XRControllerRight" instance=ExtResource("3_xdh2t")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_h0u5w")
